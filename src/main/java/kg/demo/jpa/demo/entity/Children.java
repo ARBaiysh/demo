@@ -17,11 +17,11 @@ public class Children {
     private String name;
     private int age;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @EqualsAndHashCode.Exclude
     private Husband husband;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @EqualsAndHashCode.Exclude
     private Wife wife;
 

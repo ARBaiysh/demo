@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import static javax.persistence.CascadeType.*;
+
 
 @Data
 @Entity
@@ -21,17 +23,11 @@ public class Wife {
 
     private int age;
 
-    @OneToOne(mappedBy = "wife", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToOne(mappedBy = "wife", cascade = {DETACH, MERGE, PERSIST, REFRESH})
     @EqualsAndHashCode.Exclude
     private Husband husband;
 
-    @OneToMany(mappedBy = "wife",
-            cascade = {
-                    CascadeType.DETACH,
-                    CascadeType.MERGE,
-                    CascadeType.PERSIST,
-                    CascadeType.REFRESH},
-            orphanRemoval = true)
+    @OneToMany(mappedBy = "wife", cascade = {DETACH, MERGE, PERSIST, REFRESH}, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<Children> children = new HashSet<>();
 
