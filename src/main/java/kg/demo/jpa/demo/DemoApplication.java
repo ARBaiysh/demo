@@ -48,6 +48,5 @@ public class DemoApplication implements CommandLineRunner {
         husbandRepository.save(father);
         wifeRepository.save(mother);
         childrenRepository.saveAll(asList(daughter1, daughter2, son));
-
     }
 }

@@ -1,6 +1,5 @@
 package kg.demo.jpa.demo.controller;
 
-import kg.demo.jpa.demo.dto.ChildrenDTO;
 import kg.demo.jpa.demo.service.ChildrenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,14 +16,14 @@ public class ChildrenController {
     private final ChildrenService childrenService;
 
 
-    @GetMapping()
-    public List<ChildrenDTO> getHusband(){
-        return childrenService.getAllChildren();
-    }
-
-
-    @GetMapping("{id}")
-    public ChildrenDTO getHusband(@PathVariable String id){
-        return childrenService.getChildrenById(id);
-    }
+//    @GetMapping()
+//    public List<ChildrenDTO> getHusband(){
+//        return childrenService.getAllChildren();
+//    }
+//
+//
+//    @GetMapping("{id}")
+//    public ChildrenDTO getHusband(@PathVariable String id){
+//        return childrenService.getChildrenById(id);
+//    }
 }
