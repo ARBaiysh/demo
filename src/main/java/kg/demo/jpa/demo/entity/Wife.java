@@ -14,6 +14,7 @@ import static javax.persistence.CascadeType.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = {"husband", "children"})
 public class Wife {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +31,4 @@ public class Wife {
     @OneToMany(mappedBy = "wife", cascade = {DETACH, MERGE, PERSIST, REFRESH}, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<Children> children = new HashSet<>();
-
 }

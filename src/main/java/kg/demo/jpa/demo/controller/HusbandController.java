@@ -1,7 +1,7 @@
 package kg.demo.jpa.demo.controller;
 
 import kg.demo.jpa.demo.dto.DTOEntity;
-import kg.demo.jpa.demo.dto.HusbandCreateDTO;
+import kg.demo.jpa.demo.dto.husbandDTO.HusbandCreateDTO;
 import kg.demo.jpa.demo.service.HusbandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,13 +17,16 @@ import java.util.List;
 public class HusbandController {
     private final HusbandService husbandService;
 
+    @GetMapping()
+    public List<DTOEntity> read() {
+        return husbandService.readHusbands();
+    }
+
     @PostMapping("/create")
-    public ResponseEntity<?> createPost(@Valid @RequestBody HusbandCreateDTO husbandCreateDTO) {
+    public ResponseEntity<?> create(@Valid @RequestBody HusbandCreateDTO husbandCreateDTO) {
         husbandService.createHusband(husbandCreateDTO);
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
-    @GetMapping("/list")
-    public List<DTOEntity> readUser() {
-        return husbandService.readHusbands();
-    }
+
+
 }

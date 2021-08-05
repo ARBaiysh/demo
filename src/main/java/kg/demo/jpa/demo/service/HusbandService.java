@@ -1,8 +1,8 @@
 package kg.demo.jpa.demo.service;
 
 import kg.demo.jpa.demo.dto.DTOEntity;
-import kg.demo.jpa.demo.dto.HusbandCreateDTO;
-import kg.demo.jpa.demo.dto.HusbandReadDTO;
+import kg.demo.jpa.demo.dto.husbandDTO.HusbandCreateDTO;
+import kg.demo.jpa.demo.dto.husbandDTO.HusbandReadDTO;
 import kg.demo.jpa.demo.entity.Husband;
 import kg.demo.jpa.demo.repository.HusbandRepository;
 import kg.demo.jpa.demo.utils.DtoUtils;
@@ -28,11 +28,11 @@ public class HusbandService {
     public List<DTOEntity> readHusbands() {
         List<DTOEntity> dtoEntities = new ArrayList<>();
         List<Husband> all = husbandRepository.findAll();
-        for (Husband husband : all){
+        for (Husband husband : all) {
             dtoEntities.add(new DtoUtils().convertToDto(husband, new HusbandReadDTO()));
         }
 
-            return dtoEntities;
+        return dtoEntities;
 
     }
 }

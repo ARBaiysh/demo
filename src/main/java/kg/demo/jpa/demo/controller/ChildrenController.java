@@ -1,12 +1,14 @@
 package kg.demo.jpa.demo.controller;
 
+import kg.demo.jpa.demo.dto.DTOEntity;
+import kg.demo.jpa.demo.dto.childrenDTO.ChildrenCreateDTO;
 import kg.demo.jpa.demo.service.ChildrenService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,15 +17,14 @@ import java.util.List;
 public class ChildrenController {
     private final ChildrenService childrenService;
 
+    @GetMapping()
+    public List<DTOEntity> read() {
+        return childrenService.readChildren();
+    }
 
-//    @GetMapping()
-//    public List<ChildrenDTO> getHusband(){
-//        return childrenService.getAllChildren();
-//    }
-//
-//
-//    @GetMapping("{id}")
-//    public ChildrenDTO getHusband(@PathVariable String id){
-//        return childrenService.getChildrenById(id);
-//    }
+    @PostMapping("/create")
+    public ResponseEntity<?> create(@Valid @RequestBody ChildrenCreateDTO childrenCreateDTO) {
+        childrenService.createChildren(childrenCreateDTO);
+        return ResponseEntity.ok(HttpStatus.CREATED);
+    }
 }

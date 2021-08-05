@@ -1,5 +1,6 @@
-package kg.demo.jpa.demo.dto;
+package kg.demo.jpa.demo.dto.wifeDTO;
 
+import kg.demo.jpa.demo.dto.DTOEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

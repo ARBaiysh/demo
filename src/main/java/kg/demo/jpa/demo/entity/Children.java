@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = {"husband", "wife"})
 public class Children {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

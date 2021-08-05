@@ -9,15 +9,7 @@ public class DtoUtils {
         return new ModelMapper().map(obj, mapper.getClass());
     }
 
-    public Object convertToEntity(Object obj, DTOEntity mapper) throws NumberFormatException {
-        try {
-            Object map = new ModelMapper().map(mapper, obj.getClass());
-            return map;
-        } catch (Exception e) {
-            return null;
-        }
-
-
+    public Object convertToEntity(Object obj, DTOEntity mapper) {
+        return new ModelMapper().map(mapper, obj.getClass());
     }
-
 }
