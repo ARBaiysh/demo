@@ -25,11 +25,11 @@ public class WifeService {
     }
 
     public List<DTOEntity> readHusbands() {
-        List<DTOEntity> dtoEntityes = new ArrayList<>();
         List<Wife> all = wifeRepository.findAll();
-        for (Wife wife : all) {
-            dtoEntityes.add(new DtoUtils().convertToDto(wife, new WifeReadDTO()));
-        }
-        return dtoEntityes;
+
+        List<DTOEntity> dtoEntities = new ArrayList<>();
+        all.forEach(wife -> dtoEntities.add(new DtoUtils().convertToDto(wife, new WifeReadDTO())));
+
+        return dtoEntities;
     }
 }

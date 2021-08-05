@@ -3,8 +3,10 @@ package kg.demo.jpa.demo.service;
 import kg.demo.jpa.demo.dto.DTOEntity;
 import kg.demo.jpa.demo.dto.childrenDTO.ChildrenCreateDTO;
 import kg.demo.jpa.demo.dto.childrenDTO.ChildrenReadDTO;
+import kg.demo.jpa.demo.dto.childrenDTO.ChildrenUpdateDTO;
 import kg.demo.jpa.demo.entity.Children;
 import kg.demo.jpa.demo.repository.ChildrenRepository;
+import kg.demo.jpa.demo.repository.WifeRepository;
 import kg.demo.jpa.demo.utils.DtoUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,10 +28,10 @@ public class ChildrenService {
 
     public List<DTOEntity> readChildren() {
         List<DTOEntity> dtoEntities = new ArrayList<>();
+
         List<Children> all = childrenRepository.findAll();
-        for (Children children : all) {
-            dtoEntities.add(new DtoUtils().convertToDto(children, new ChildrenReadDTO()));
-        }
+        all.forEach(children -> dtoEntities.add(new DtoUtils().convertToDto(children, new ChildrenReadDTO())));
+
         return dtoEntities;
     }
 }

@@ -2,6 +2,7 @@ package kg.demo.jpa.demo.controller;
 
 import kg.demo.jpa.demo.dto.DTOEntity;
 import kg.demo.jpa.demo.dto.husbandDTO.HusbandCreateDTO;
+import kg.demo.jpa.demo.dto.husbandDTO.HusbandUpdateDTO;
 import kg.demo.jpa.demo.service.HusbandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,11 @@ public class HusbandController {
     public ResponseEntity<?> create(@Valid @RequestBody HusbandCreateDTO husbandCreateDTO) {
         husbandService.createHusband(husbandCreateDTO);
         return ResponseEntity.ok(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<?> update(@Valid @RequestBody HusbandUpdateDTO husbandUpdateDTO) {
+        return new ResponseEntity<>(husbandService.updateHusband(husbandUpdateDTO), HttpStatus.OK);
     }
 
 

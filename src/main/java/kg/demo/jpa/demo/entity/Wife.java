@@ -31,4 +31,9 @@ public class Wife {
     @OneToMany(mappedBy = "wife", cascade = {DETACH, MERGE, PERSIST, REFRESH}, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private Set<Children> children = new HashSet<>();
+
+    public void addChildren(Children children) {
+        this.children.add(children);
+        children.setWife(this);
+    }
 }

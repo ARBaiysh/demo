@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ChildrenRepository extends JpaRepository<Children, Long> {
+    boolean existsChildrenById(Long id);
 }
